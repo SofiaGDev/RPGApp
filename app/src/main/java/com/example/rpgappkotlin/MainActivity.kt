@@ -3,6 +3,7 @@ package com.example.rpgappkotlin
 
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -34,9 +35,11 @@ class MainActivity : AppCompatActivity() {
     fun sortear(view: View) {
         val textResultado = findViewById<TextView>(R.id.text_resultado)
         val textAllRolls = findViewById<TextView>(R.id.text_allrolls)
+        val inputText = findViewById<EditText>(R.id.input_text)
 
+        val inputInt = inputText.text.toString().toInt()
         // Sorteia 10 números entre 0 e 10
-        val results = Array(10) { (0..10).random() }
+        val results = Array(inputInt) { (0..inputInt).random() }
 
         // Agrupa e conta quantas vezes cada número diferente de 0 aparece
         val contagem = results.filter { it != 0 }
