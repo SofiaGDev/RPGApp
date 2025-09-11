@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
+
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,11 +36,28 @@ class MainActivity : AppCompatActivity() {
 
     fun sortear(view: View) {
         val textResultado = findViewById<TextView>(R.id.text_resultado)
-        val textAllRolls = findViewById<TextView>(R.id.text_allrolls)
+//        val textAllRolls = findViewById<TextView>(R.id.text_allrolls)
+        val warningText = findViewById<TextView>(R.id.warning_text)
         val inputText = findViewById<EditText>(R.id.input_text)
 
-        val inputInt = inputText.text.toString().toInt()
-        // Sorteia 10 números entre 0 e 10
+        //val inputInt = inputText.text.toString().toInt()
+        var inputInt = 0
+        if (inputText.text.toString() != "")
+        {
+            inputInt = inputText.text.toString().toInt()
+            if (inputInt > 20){
+                warningText.text = "You cannot roll more than 20 dices, your pool was changed to 20"
+            }else {
+                warningText.text = ""
+            }
+
+        }
+        else inputInt = 0
+
+
+        // Sorteia o numero escolhido
+
+
         val results = Array(inputInt) { (0..inputInt).random() }
 
         // Agrupa e conta quantas vezes cada número diferente de 0 aparece
@@ -56,8 +75,10 @@ class MainActivity : AppCompatActivity() {
                 .map { "${it.value}x${it.key}" } // Formata como "NxNúmero"
 
             // Exibe no TextView
+
+
             textResultado.text = resultadoOrdenado.joinToString(", ")
-            textAllRolls.text = results.joinToString()
+//            textAllRolls.text = results.joinToString()
 
             //text_allrolls
         }
