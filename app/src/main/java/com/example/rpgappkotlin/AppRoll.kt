@@ -1,6 +1,5 @@
 package com.example.rpgappkotlin
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -11,22 +10,24 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import kotlin.reflect.KClass
 
-
-class MainActivity : AppCompatActivity() {
+class AppRoll : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_app_roll)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
-
         }
     }
 
+    fun change_roll_activity(view: View) {
+        val changeToRollPage = findViewById<Button>(R.id.change_roll_activity)
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
 
     fun sortear(view: View) {
         val textResultado = findViewById<TextView>(R.id.text_resultado2)
@@ -76,15 +77,10 @@ class MainActivity : AppCompatActivity() {
 
             //text_allrolls
         }
+    }
 
-}}
 
-fun rolls(view:View) {
-    val count = 0
-    val results = Array(15) { (0..10).random() }
 
-}
 
-fun limpar (view:View) {
-//    todo: limpar a lista de rolagens
+
 }
