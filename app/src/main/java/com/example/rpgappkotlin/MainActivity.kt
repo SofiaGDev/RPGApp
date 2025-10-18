@@ -83,6 +83,8 @@ fun rolls(view:View) {
     val count = 0
     val results = Array(15) { (0..10).random() }
 
+
+
 }
 
 fun limpar (view:View) {
